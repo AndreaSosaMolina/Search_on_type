@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9">
+
+            <div class="input-group" >
+                <button *ngFor="let country of countries"
+                         class="btn btn-primary
+                        {{country.name == countrySelected && 'btn-success'}}"
+                        (click)="selectCountry(country)">
+                        {{country.name}}
+                        
+                </button>
+                <app-input-search
+                            (onSearch)="searching( $event)">
+                </app-input-search>
+             
+            </div>
+
+        </div>
+    </div>
+   
+
+    <div class="row">
+        <div class="col-md-12 my-4">
+            <ol *ngFor="let university of universities">
+                <li>
+                    {{university.name}}
+                </li>
+            </ol>
+
+            <div *ngIf="universities.length < 1 && search.length !== 0" 
+                    class="alert alert-danger">
+                   No se encontró nada relacionado con: <b>{{search}}</b>
+                   
+            </div>
+        </div>
+    </div>
+
+</div>
